@@ -1,0 +1,39 @@
+﻿@model MediatrPattern.Entities.Employee
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title text-info mb-0">
+            <span class="fa fa-info-circle"></span> Employee Info
+        </h5>
+    </div>
+    <div class="card-body condensed-view p-0">
+        <table class="table table-striped table-bordered table-hover table-sm mb-0">
+            <tbody>
+            <tr>
+                <th>Name</th>
+                <td>@Model.FirstName</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>@Model.LastName</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>@Model.Address</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>@Model.Salary</td>
+            </tr>
+
+            <td>
+                <partial name="_EmployeeAction" model="@Model"/>
+            </td>
+            </tbody>
+        </table>
+    </div>
+</div>

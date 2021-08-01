@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.List<MediatrPattern.Entities.Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+    Layout = "_Layout";
+}
+<partial name="_EmployeeToolbar"/>
+
+@if (!Model.Any())
+{
+    <h2 class="text-center">No data found ..</h2>
+}
+else
+{
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+        <td>#</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>Address</td>
+        <td>Phone</td>
+        <td>Salary</td>
+        <td class="text-center">Action</td>
+        <tr/>
+        </thead>
+        <tbody>
+        @{
+            var sn = 1;
+            foreach (var e in Model)
+            {
+                <tr>
+                    <td>@(sn++)</td>
+                    <td>@e.FirstName</td>
+                    <td>@e.LastName</td>
+                    <td>@e.Address</td>
+                    <td>@e.Phone</td>
+                    <td>@e.Salary</td>
+                    <td class="text-center">
+                        <partial name="_EmployeeAction" model="@e"/>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+}

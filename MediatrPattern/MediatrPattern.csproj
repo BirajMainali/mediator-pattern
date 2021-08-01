@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>aspnet-MediatrPattern-077A7CB3-4285-4347-B0D5-D16F4929D865</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7" />
+        <PackageReference Include="Npgsql" Version="5.0.7" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+    </ItemGroup>
+
+</Project>
