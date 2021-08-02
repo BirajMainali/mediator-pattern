@@ -52,6 +52,7 @@ namespace XTest
             await _employeeService.Remove(employee);
             Mock.Get(_employeeRepository).Verify(x => x.Remove(employee));
         }
+        
         private static EmployeeDto GetDto()
         {
             const string firstName = "XBiraj";
