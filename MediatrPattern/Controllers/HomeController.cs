@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using MediatrPattern.Entities;
 using MediatrPattern.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

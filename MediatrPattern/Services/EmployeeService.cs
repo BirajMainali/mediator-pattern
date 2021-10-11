@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Transactions;
 using MediatrPattern.Dto;
 using MediatrPattern.Entities;
@@ -19,28 +20,52 @@ namespace MediatrPattern.Services
         public async Task<Employee> Create(EmployeeDto dto)
         {
             using var tsc = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-            var employee = new Employee(dto.FirstName, dto.LastName, dto.Address, dto.Phone, dto.Salary);
-            await _employeeRepository.Create(employee);
-            await _employeeRepository.Flush();
-            tsc.Complete();
-            return employee;
+            try
+            {
+                var employee = new Employee(dto.FirstName, dto.LastName, dto.Address, dto.Phone, dto.Salary);
+                await _employeeRepository.Create(employee);
+                await _employeeRepository.Flush();
+                tsc.Complete();
+                return employee;
+            }
+            catch (Exception e)
+            {
+                tsc.Dispose();
+                throw;
+            }
         }
 
         public async Task Update(Employee employee, EmployeeDto dto)
         {
             using var tsc = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-            employee.Update(dto.FirstName, dto.LastName, dto.Address, dto.Phone, dto.Salary);
-            _employeeRepository.Update(employee);
-            await _employeeRepository.Flush();
-            tsc.Complete();
+            try
+            {
+                employee.Update(dto.FirstName, dto.LastName, dto.Address, dto.Phone, dto.Salary);
+                _employeeRepository.Update(employee);
+                await _employeeRepository.Flush();
+                tsc.Complete();
+            }
+            catch (Exception e)
+            {
+                tsc.Dispose();
+                throw;
+            }
         }
 
         public async Task Remove(Employee employee)
         {
             using var tsc = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-            _employeeRepository.Remove(employee);
-            await _employeeRepository.Flush();
-            tsc.Complete();
+            try
+            {
+                _employeeRepository.Remove(employee);
+                await _employeeRepository.Flush();
+                tsc.Complete();
+            }
+            catch (Exception e)
+            {
+                tsc.Dispose();
+                throw;
+            }
         }
     }
 }
